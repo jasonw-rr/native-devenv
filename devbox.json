@@ -1,0 +1,30 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.11.1/.schema/devbox.schema.json",
+  "packages": [
+    "python@3.9.19",
+    "nodejs@20.11.0",
+    "go@1.21.11",
+    "git@latest",
+    "terraform@latest",
+    "nginx@latest",
+    "redis@latest",
+    "localstack@latest",
+    "direnv@latest"
+  ],
+  "shell": {
+    "init_hook": [
+      "echo 'Welcome to devbox!' > /dev/null"
+    ],
+    "scripts": {
+      "test": [
+        "echo \"Error: no test specified\" && exit 1"
+      ],
+      "start": [
+        "echo \"Starting RR services now ...\" && exit 0"
+      ]
+    }
+  },
+  "include": [
+    "path:roserocket_db/plugin.json"
+  ]
+}

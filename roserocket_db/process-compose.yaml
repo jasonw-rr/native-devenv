@@ -1,0 +1,23 @@
+version: "0.5"
+
+processes:
+  classic_db:
+    command: "pg_ctl -D $PWD/.devbox/virtenv/roserocket_db/classic_data start"
+    is_daemon: true
+    shutdown:
+      command: "pg_ctl -D $PWD/.devbox/virtenv/roserocket_db/classic_data stop -m fast"
+    availability:
+      restart: "always"
+    readiness_probe:
+      exec:
+        command: "pg_isready -h localhost -p 5432"
+  platform_db:
+    command: "pg_ctl -D $PWD/.devbox/virtenv/roserocket_db/platform_data start"
+    is_daemon: true
+    shutdown:
+      command: "pg_ctl -D $PWD/.devbox/virtenv/roserocket_db/platform_data stop -m fast"
+    availability:
+      restart: "always"
+    readiness_probe:
+      exec:
+        command: "pg_isready -h localhost -p 5433"

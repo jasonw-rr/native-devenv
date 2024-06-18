@@ -1,0 +1,24 @@
+{
+  "name": "roserocket_db",
+  "version": "1.0",
+  "description": "PostgreSQL DB for Classic and Platform",
+  "packages":[
+    "postgresql@13"
+  ],
+  "env": {
+  },
+  "create_files": {
+    "{{ .Virtenv }}/postgresql.classic.conf": "config/postgresql.classic.conf",
+    "{{ .Virtenv }}/postgresql.platform.conf": "config/postgresql.platform.conf",
+    "{{ .Virtenv }}/process-compose.yaml": "process-compose.yaml"
+  },
+  "shell": {
+    "init_hook": [
+    ],
+     "scripts": {
+      "init_db": "PGDATA={{ .Virtenv }}/classic_data initdb && cp {{ .Virtenv }}/postgresql.classic.conf {{ .Virtenv }}/classic_data/postgresql.conf && PGDATA={{ .Virtenv }}/platform_data initdb && cp {{ .Virtenv }}/postgresql.platform.conf {{ .Virtenv }}/platform_data/postgresql.conf"
+    }
+  },
+  "include": [
+  ]
+}
