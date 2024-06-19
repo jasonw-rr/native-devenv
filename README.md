@@ -10,6 +10,7 @@
 * Multiple redis instances for classic and platform
 * Update Nginx reverse proxy
 * Unleash
+* SSL proxy and cert gen https://www.nixhub.io/packages/ssl-proxy
 * ...
 
 ## TBD
